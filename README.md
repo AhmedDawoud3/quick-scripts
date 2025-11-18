@@ -15,7 +15,7 @@ s <future-command> <args>
 
 1. Clone this repository:
    ```powershell
-   git clone https://github.com/<your-username>/quick-scripts.git c:\SCRIPTS
+   git clone https://github.com/AhmedDawoud3/quick-scripts.git c:\SCRIPTS
    ```
 
 2. Add the following to your PowerShell profile (`$PROFILE`):
