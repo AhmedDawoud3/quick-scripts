@@ -9,26 +9,6 @@
     s --help
 #>
 
-# Tab completion for subcommands
-Register-ArgumentCompleter -CommandName 's.ps1' -ParameterName 'Subcommand' -ScriptBlock {
-    param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
-    
-    $ScriptsPath = Join-Path $PSScriptRoot "scripts"
-    
-    if (Test-Path $ScriptsPath) {
-        Get-ChildItem -Path $ScriptsPath -Filter "*.ps1" | 
-            Where-Object { $_.BaseName -like "$wordToComplete*" } |
-            ForEach-Object {
-                [System.Management.Automation.CompletionResult]::new(
-                    $_.BaseName,
-                    $_.BaseName,
-                    'ParameterValue',
-                    $_.BaseName
-                )
-            }
-    }
-}
-
 param(
     [Parameter(Position=0)]
     [string]$Subcommand,

@@ -81,6 +81,56 @@ s compress --help                        # Show detailed help
 **Requirements:**
 - [ffmpeg](https://ffmpeg.org/download.html) must be installed and in PATH
 
+### ping-check
+Monitor website or server uptime with continuous ping.
+
+**Usage:**
+```powershell
+s ping-check google.com                 # Monitor with 5s interval
+s ping-check 192.168.1.1 10             # Monitor with 10s interval
+s ping-check --help                      # Show help
+```
+
+**Features:**
+- Continuous monitoring with real-time status updates
+- Shows response times, average ping, and uptime percentage
+- Statistics summary on exit (Ctrl+C)
+- Color-coded status indicators
+
+### qr
+Generate QR codes from text or URLs.
+
+**Usage:**
+```powershell
+s qr "https://example.com"              # Generate from text
+s qr "Hello World"                       # Generate from string
+s qr                                     # Generate from clipboard
+s qr --help                              # Show help
+```
+
+**Features:**
+- Displays QR code directly in terminal
+- Automatically uses clipboard content if no input provided
+- Works with URLs, text, or any string
+- Scannable with phone camera
+
+### ip
+Display IP address information.
+
+**Usage:**
+```powershell
+s ip                                     # Show all IP info
+s ip --public                            # Show only public IP
+s ip --local                             # Show only local IPs
+s ip --help                              # Show help
+```
+
+**Features:**
+- Shows public IP address
+- Lists all local network interfaces and their IPs
+- Displays active network adapters
+- Color-coded output for easy reading
+
 ## Adding New Commands
 
 1. Create a new PowerShell script in the `scripts/` folder:
@@ -99,9 +149,12 @@ s compress --help                        # Show detailed help
 
 ```
 quick-scripts\
-├── s.ps1              # Main dispatcher script
+├── s.ps1                 # Main dispatcher script
 ├── scripts\
-│   └── compress.ps1   # Video compression command
+│   ├── compress.ps1      # Video compression
+│   ├── ping-check.ps1    # Host monitoring
+│   ├── qr.ps1            # QR code generator
+│   └── ip.ps1            # IP address info
 └── README.md
 ```
 
