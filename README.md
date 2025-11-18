@@ -15,7 +15,7 @@ s <future-command> <args>
 
 1. Clone this repository:
    ```powershell
-   git clone https://github.com/AhmedDawoud3/quick-scripts.git c:\SCRIPTS
+   git clone https://github.com/AhmedDawoud3/quick-scripts.git c:\quick-scripts
    ```
 
 2. Add the following to your PowerShell profile (`$PROFILE`):
@@ -30,14 +30,14 @@ s <future-command> <args>
            [string[]]$Arguments
        )
        
-       & "c:\SCRIPTS\s.ps1" $Subcommand @Arguments
+       & "c:\quick-scripts\s.ps1" $Subcommand @Arguments
    }
 
    # Tab completion for s function
    Register-ArgumentCompleter -CommandName 's' -ParameterName 'Subcommand' -ScriptBlock {
        param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
        
-       $ScriptsPath = "c:\SCRIPTS\scripts"
+       $ScriptsPath = "c:\quick-scripts\scripts"
        
        if (Test-Path $ScriptsPath) {
            Get-ChildItem -Path $ScriptsPath -Filter "*.ps1" | 
