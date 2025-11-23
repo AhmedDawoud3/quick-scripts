@@ -14,18 +14,23 @@ param(
     [string]$InputFile,
     
     [Parameter(Position=1)]
-    [string]$OutputFile
+    [string]$OutputFile,
+
+    [Parameter(Mandatory=$false)]
+    [Alias('e')]
+    [string]$Extension = "mp4"
 )
 
 # Show help
 if ($InputFile -eq "--help" -or $InputFile -eq "-h") {
     Write-Host "Compress - Video compression using ffmpeg" -ForegroundColor Cyan
     Write-Host ""
-    Write-Host "Usage: s compress <input_file> [output_file]" -ForegroundColor Yellow
+    Write-Host "Usage: s compress <input_file> [output_file] [-e extension]" -ForegroundColor Yellow
     Write-Host ""
     Write-Host "Arguments:" -ForegroundColor Green
     Write-Host "  input_file   - Path to the video file to compress"
-    Write-Host "  output_file  - (Optional) Output file path. Defaults to <input>_compressed.ext"
+    Write-Host "  output_file  - (Optional) Output file path. Defaults to <input>_compressed.<ext>"
+    Write-Host "  -e, -Extension - Target extension (default: mp4)"
     Write-Host ""
     Write-Host "Examples:" -ForegroundColor Green
     Write-Host "  s compress video.mp4"
@@ -56,8 +61,11 @@ if (-not $InputPath) {
 if (-not $OutputFile) {
     $InputDir = Split-Path $InputPath -Parent
     $InputName = [System.IO.Path]::GetFileNameWithoutExtension($InputPath)
-    $InputExt = [System.IO.Path]::GetExtension($InputPath)
-    $OutputFile = Join-Path $InputDir "${InputName}_compressed${InputExt}"
+    
+    if (-not $Extension.StartsWith(".")) {
+        $Extension = ".$Extension"
+    }
+    $OutputFile = Join-Path $InputDir "${InputName}_compressed${Extension}"
 }
 
 # Check if output file already exists

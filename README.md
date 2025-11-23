@@ -66,14 +66,16 @@ Compress video files using ffmpeg with H.265 codec.
 
 **Usage:**
 ```powershell
-s compress video.mp4                    # Creates video_compressed.mp4
-s compress input.mp4 output.mp4         # Custom output name
-s compress --help                        # Show detailed help
+s compress video.mp4                    # Creates video_compressed.mp4 (default)
+s compress video.avi -e mkv             # Creates video_compressed.mkv
+s compress input.mp4 output.mov         # Custom output name
+s compress --help                       # Show detailed help
 ```
 
 **Features:**
 - Uses H.265 (libx265) codec with CRF 28 quality
 - Automatically generates output filename with `_compressed` suffix
+- Defaults to `.mp4` output, configurable with `-e` flag
 - Copies audio without re-encoding
 - Shows file size comparison and compression savings
 - Validates input file and checks for ffmpeg installation
