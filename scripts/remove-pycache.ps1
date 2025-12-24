@@ -57,7 +57,8 @@ if ($pycacheFolders.Count -eq 0) {
     exit 0
 }
 
-Write-Host "Found $($pycacheFolders.Count) __pycache__ folder(s)" -ForegroundColor Green
+$folderText = if ($pycacheFolders.Count -eq 1) { "folder" } else { "folders" }
+Write-Host "Found $($pycacheFolders.Count) __pycache__ $folderText" -ForegroundColor Green
 
 # Store parent directories to check later
 $parentDirsToCheck = @{}
@@ -82,7 +83,8 @@ foreach ($folder in $pycacheFolders) {
 }
 
 Write-Host ""
-Write-Host "Removed $removedCount __pycache__ folder(s)" -ForegroundColor Green
+$removedFolderText = if ($removedCount -eq 1) { "folder" } else { "folders" }
+Write-Host "Removed $removedCount __pycache__ $removedFolderText" -ForegroundColor Green
 
 # Check and remove parent directories that are now empty or only contained __pycache__
 $emptyParentsRemoved = 0
