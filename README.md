@@ -133,6 +133,22 @@ s ip --help                              # Show help
 - Displays active network adapters
 - Color-coded output for easy reading
 
+### remove-pycache
+Remove Python cache folders recursively.
+
+**Usage:**
+```powershell
+s remove-pycache                         # Clean current directory
+s remove-pycache /path/to/project        # Clean specific directory
+s remove-pycache --help                  # Show help
+```
+
+**Features:**
+- Recursively finds and removes all `__pycache__` folders
+- Automatically removes parent directories that only contained `__pycache__`
+- Shows detailed progress and summary
+- Safe and non-destructive to other files
+
 ## Adding New Commands
 
 1. Create a new PowerShell script in the `scripts/` folder:
@@ -151,12 +167,13 @@ s ip --help                              # Show help
 
 ```
 quick-scripts\
-├── s.ps1                 # Main dispatcher script
+├── s.ps1                      # Main dispatcher script
 ├── scripts\
-│   ├── compress.ps1      # Video compression
-│   ├── ping-check.ps1    # Host monitoring
-│   ├── qr.ps1            # QR code generator
-│   └── ip.ps1            # IP address info
+│   ├── compress.ps1           # Video compression
+│   ├── ping-check.ps1         # Host monitoring
+│   ├── qr.ps1                 # QR code generator
+│   ├── ip.ps1                 # IP address info
+│   └── remove-pycache.ps1     # Python cache cleaner
 └── README.md
 ```
 
