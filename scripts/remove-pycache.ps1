@@ -105,7 +105,8 @@ foreach ($parentDir in $parentDirsToCheck.Keys) {
 
 if ($emptyParentsRemoved -gt 0) {
     Write-Host ""
-    Write-Host "Removed $emptyParentsRemoved empty parent director(y/ies)" -ForegroundColor Green
+    $dirText = if ($emptyParentsRemoved -eq 1) { "directory" } else { "directories" }
+    Write-Host "Removed $emptyParentsRemoved empty parent $dirText" -ForegroundColor Green
 }
 
 Write-Host ""
